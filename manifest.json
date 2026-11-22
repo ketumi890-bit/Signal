@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "AT Phoenix AI - Quotex Helper",
+  "version": "1.2.0",
+  "description": "Quotex auto-trade helper with customizable floating icon and scanner animations.",
+  "icons": {
+    "16": "icons/phoenix.png",
+    "48": "icons/phoenix.png",
+    "128": "icons/phoenix.png"
+  },
+  "permissions": ["storage", "activeTab", "unlimitedStorage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "AT Phoenix AI Settings",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/phoenix.png",
+      "48": "icons/phoenix.png",
+      "128": "icons/phoenix.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["customizer.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icons/phoenix.png",
+        "images/phoenix.png"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
